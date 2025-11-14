@@ -14,25 +14,36 @@ Unity の Rigidbody 制御とパーティクル処理を組み合わせ、
 
 <img src="./image4.gif" width="600">
 
+### 技術概要
+- `Physics.OverlapSphere` による範囲内オブジェクト検出  
+- 中心方向ベクトル `(center - position)` の算出  
+- 距離に応じた減衰付き吸引力  
+  `force = strength * (1 - distance/radius)^2`  
+- `AddForce(..., ForceMode.Acceleration)` を用いた継続的吸引  
+- コルーチンによる一定時間の引力処理  
+- 最終的な速度リセットによる挙動安定化  
+
+ブラックホール風の「徐々に中心へ吸い寄せられる」物理的挙動を実現しています。
+
 ---
 
 ## 研究・プロジェクト
 
 ### PCB 欠陥検出（Deep Learning / YOLO）
 - DeepPCB データセットを用いた欠陥位置推定  
-- YOLOv5 / YOLOv7 / YOLOv8 を用いた比較実験  
-- 小物体検出向けに SAHI（Slicing Aided Hyper Inference）を適用  
-- データ前処理（領域スライス、アノテーション変換、品質管理）  
-- Python、PyTorch、OpenCV を用いた推論パイプラインの構築  
+- YOLOv5 / YOLOv7 / YOLOv8 の性能比較  
+- 小物体検出における YOLO 系モデルの挙動分析  
+- SAHI（Slicing Aided Hyper Inference）の適用調査  
+- Python、PyTorch、OpenCV を用いた再現実験とモデル評価  
 
 ---
 
 ### Unity – 物理インタラクション開発
-- Black Hole Effect（上記デモ）  
-- キャラクター移動（移動、ジャンプ、スプリント、スライド）  
-- 壁面判定に基づくクライミング処理  
-- Raycast、Collision、Rigidbody を利用した物理挙動制御  
-- Shader Graph を用いた簡易エフェクト  
+- Black Hole 引力エフェクト（上記デモ）  
+- キャラクター移動（歩行、ジャンプ、スプリント、スライド）  
+- 壁面判定によるクライミング処理  
+- Raycast / Collision / Rigidbody を用いた物理制御  
+- Shader Graph を使用した簡易エフェクト生成  
 
 ※ 過去のプロトタイプは整理後、順次公開予定です。
 
@@ -48,7 +59,7 @@ Unity の Rigidbody 制御とパーティクル処理を組み合わせ、
 ---
 
 ## GitHub Stats
-![Stats](https://github-readme-stats.vercel.app/api?username=arctanh9sss&show_icons=true&theme=tokyonight)
+![Stats](https://github-readme-stats.vercel.app/api?username=arctanh9sss&show_icons=true&hide=issues,contribs,prs,stars&theme=tokyonight)
 
 ---
 
